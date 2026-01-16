@@ -1,0 +1,757 @@
+@charset "UTF-8";
+
+:root {
+   	--jsl-orange: #FF843A;
+   	--dark-bg: #12100e; 
+    --card-bg: #1c1a18;
+    --text-gray: #888888;
+}
+
+body {
+	background-color: var(--dark-bg);
+	color: #ffffff;
+	font-family: 'Pretendard', sans-serif;
+	overflow-x: hidden;
+	margin: 0;
+    padding: 0;
+}
+
+/* === Custom Modal (Glassmorphism Theme) === */
+.modal-overlay {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* 뒷배경 어둡게 */
+    backdrop-filter: blur(5px); /* 뒷배경 블러 처리 */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-modal {
+    background: rgba(15, 15, 15, 0.9); /* 거의 검은색에 가까운 투명도 */
+    border: 1px solid rgba(255, 132, 58, 0.3); /* 주황빛 테두리 */
+    box-shadow: 0 0 20px rgba(255, 132, 58, 0.15); /* 주황빛 은은한 발광 */
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-title {
+    color: var(--jsl-orange, #ff843a); /* 주황색 타이틀 */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-message {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+    white-space: pre-line; 
+    text-align: center;
+    line-height: 1.6;
+}
+
+.btn-modal-ok {
+    background: var(--jsl-orange, #ff843a);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-modal-ok:hover {
+    background: #e06b20; /* 호버 시 조금 더 어둡게 */
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* < Header 스타일 > */
+.header-nav { border-bottom: 1px solid #2a2724; padding: 1rem 0; background-color: var(--dark-bg) !important; }
+.logo { color: var(--jsl-orange) !important; font-weight: 800; font-size: 1.5rem; text-decoration: none; }
+.nav-icons i { font-size: 1.5rem; cursor: pointer; color: #333; margin-left: 1.5rem; }
+
+/* ==== Header Search Bar  ==== */
+
+/* 1. 검색창 컨테이너 (기준점) */
+.search-container {
+    width: 400px;
+    position: relative; /* 자식 요소들의 기준점이 됨 */
+}
+/* 2. 폼 태그 (입력창과 버튼을 감싸는 박스) */
+.search-form {
+    position: relative; /* 버튼이 이 안에서 둥둥 뜰 수 있게 함 */
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+/* 3. 입력창 스타일 (공간 확보가 핵심) */
+.search-bar {
+    width: 100%;
+    height: 45px; /* 높이 고정 */
+    border-radius: 25px;
+    background-color: #2a2724 !important;
+    border: 1px solid #3d3a37 !important;
+    color: white !important;
+    
+    /* [중요] 오른쪽 여백을 50px 줘서 돋보기 들어갈 자리를 비워둡니다 */
+    padding: 10px 50px 10px 20px !important; 
+}
+
+.search-bar::placeholder {
+    color: #777;
+}
+
+/* 4. 돋보기 버튼 */
+.btn-search-submit {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease-out, color 0.2s ease-out;
+    
+    background: transparent !important;
+    border: none !important;
+    padding: 12px; /* 클릭 영역을 넓혀줍니다 (중요!) */
+    
+    z-index: 99; /* 입력창보다 무조건 위에 뜨게 함 */
+    
+    pointer-events: auto; /* 클릭 이벤트를 강제로 받음 */
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--jsl-orange);
+    
+    /* 클릭 시 생기는 하얀 테두리 및 그림자 제거 */
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 아이콘 스타일 */
+.btn-search-submit i {
+    font-size: 1.3rem;
+    color: var(--jsl-orange);
+    
+    /* 아이콘을 클릭해도 부모 버튼이 클릭되도록 함 */
+    pointer-events: none; 
+}
+
+.btn-search-submit:hover i {
+    transform: translateY(-50%) scale(1.2);
+    color: #ff9d63;
+}
+
+.bi-search { /* 돋보기 위치 수직 중앙으로 강제 고정 */
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%); /* 정확한 수직 중앙 정렬 */
+	color: var(--jsl-orange);
+	pointer-events: none;
+	z-index: 5;
+}
+.nav-icons i { 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    color: #ffffff; 
+    margin-left: 1.5rem; 
+    transition: color 0.3s;
+}
+.nav-icons i:hover {
+    color: var(--jsl-orange);
+}
+
+/* 헤더 전용 로그인 버튼 */
+.btn-header-login {
+    background-color: var(--jsl-orange, #ff843a); /* 테마 주황색 */
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px; /* 둥근 알약 모양 */
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid var(--jsl-orange, #ff843a);
+    transition: all 0.3s ease;
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 호버 효과: 배경 투명 + 주황 테두리 */
+.btn-header-login:hover {
+    background-color: transparent;
+    color: var(--jsl-orange, #ff843a);
+}
+
+/* 아이콘 크기 통일 및 커서 설정 */
+.nav-icons i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.nav-icons i:hover {
+    color: var(--jsl-orange, #ff843a);
+}
+
+/* === Header Dropdown Menu === */
+
+/* 1. 드롭다운 감싸는 컨테이너 (기준점) */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0; /* 마우스가 이동할 때 끊기지 않도록 여백 확보 */
+}
+
+/* 2. 메뉴 아이콘 (햄버거) 스타일 */
+.menu-icon {
+    font-size: 1.8rem; /* 조금 더 키움 */
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+.dropdown-wrapper:hover .menu-icon {
+    color: var(--jsl-orange);
+}
+
+/* 3. 숨겨진 메뉴 박스 (글래스모피즘) */
+.dropdown-menu-glass {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 260px; /* 너비 넉넉하게 유지 */
+    white-space: nowrap;
+    
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeInMenu 0.3s ease;
+    
+    text-align: left; 
+}
+
+/* 4. 마우스 올렸을 때 메뉴 보이기 */
+.dropdown-wrapper:hover .dropdown-menu-glass {
+    display: block;
+}
+
+/* 5. 메뉴 아이템 스타일 */
+.menu-item {
+    /* [핵심 수정] Flexbox로 아이콘과 텍스트를 왼쪽부터 나란히 배치 */
+    display: flex; 
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    
+    padding: 12px 15px; /* 왼쪽 여백을 25px로 주어 시원하게 */
+    width: 100%; /* 가로 꽉 채우기 */
+    
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-left-color: var(--jsl-orange); /* 왼쪽 주황색 선 등장 */
+}
+
+/* 구분선 */
+.dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 5px 0;
+}
+
+/* 로그아웃 텍스트 강조 */
+.menu-item.text-orange:hover {
+    color: var(--jsl-orange);
+}
+
+/* 등장 애니메이션 */
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* <======== 메인 콘텐츠 및 박스오피스 ========> */
+
+main.container {
+	background-color: transparent; /* 다크 테마를 위해 투명하게 변경 */
+	padding: 2rem;
+	border-radius: 20px;
+}
+
+.movie-scroll-container {
+	display: flex;
+	flex-wrap: nowrap;
+    overflow-x: auto;
+	gap: 1.5rem;
+	padding: 1rem 0 2rem 0;
+	scrollbar-width: none;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none;
+	cursor : grab;
+	}
+.movie-scroll-container::-webkit-scrollbar { display: none; }
+      
+.movie-card {
+	min-width: 300px;
+	flex: 0 0 calc((100% - (20px * 3)) / 4);
+	min-width: 250px;
+	border: none !important;
+	transition: transform 0.3s ease;
+	background: transparent !important;
+}
+.movie-card:active {
+    cursor: grabbing; /* 드래그 중일 때 아이콘 변경 */
+}
+.movie-card:hover { transform: translateY(-10px); }
+.movie-card img {
+	width: 100%;
+	height: 420px;
+	object-fit: cover;
+	border-radius: 12px; 
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.card-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+.movie-catchphrase {
+	font-size: 1rem;     
+	color: var(--text-gray) !important;         
+	letter-spacing: -0.5px;
+	font-weight: 600;
+	margin-bottom: 1rem;	
+}
+.movie-date {
+	font-size: 0.85rem;     
+	color: var(--text-gray) !important;         
+	letter-spacing: -0.5px;
+	font-weight: 400;
+	margin-bottom: 1rem;
+}
+.btn-reserve { 
+	background-color: var(--jsl-orange); 
+	color: white !important; 
+	border: none; 
+	font-weight: bold; 
+	padding: 0.7rem;
+	border-radius: 8px;
+	transition: 0.3s;
+}
+.btn-reserve:hover {
+	background-color: #e67633;
+	box-shadow: 0 4px 15px rgba(255, 132, 58, 0.3);
+}
+
+/* 3. 이벤트 섹션 */
+.event-section { background-color: #1a1816; padding: 5rem 0; }
+.event-banner { 
+    background: #25221f; 
+    border-radius: 15px; 
+    height: 150px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: #fff;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+.event-banner:hover {
+    border-color: var(--jsl-orange);
+}
+
+/* 4. Footer 스타일 */
+footer { 
+    background: #000; 
+    color: #888; 
+    padding: 4rem 0; 
+    font-size: 0.9rem; 
+    border-top: 1px solid #2a2724;
+}
+.footer-logo { 
+    color: var(--jsl-orange); 
+    font-weight: bold; 
+    font-size: 1.2rem;
+    margin-bottom: 1rem; 
+    display: block; 
+}
+footer p { margin-bottom: 0.3rem; }
+
+/* =========================================
+   [SECTOR] MOVIE DETAIL PAGE (FINAL RECOVERY)
+   ========================================= */
+
+/* 1. 히어로 섹션 전체 레이아웃 */
+.detail-hero {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    overflow: hidden;
+    background-color: #000; /* 블러 뒤 기본 배경 */
+}
+
+/* 2. 배경 포스터 블러 효과 (가상 요소) */
+.detail-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: var(--poster-url);
+    background-size: cover;
+    background-position: center;
+    filter: blur(50px) brightness(0.25); /* 어둡고 아주 흐릿하게 */
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.detail-hero .container {
+    position: relative;
+    z-index: 2; /* 배경 위에 내용이 오도록 */
+}
+
+/* 3. 포스터 이미지 (509:755 비율 및 사이즈 제한) */
+.detail-poster {
+    width: 100%;
+    max-width: 350px; /* 너무 크지 않게 제한 */
+    aspect-ratio: 509 / 755;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+/* 4. 정보창 글래스모피즘 */
+.movie-info-wrap {
+    background: rgba(0, 0, 0, 0.55) !important; 
+    
+    /* 글래스 효과 유지 */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* 테두리도 약간 어둡게 */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+}
+
+/* 5. 텍스트 상세 스타일 */
+.detail-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.catchphrase {
+    color: var(--jsl-orange);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.meta-item {
+    font-size: 0.95rem;
+    color: #bbb;
+}
+
+.synopsis-title {
+    font-size: 1.2rem;
+    color: var(--jsl-orange);
+    margin-top: 2rem;
+    border-left: 3px solid var(--jsl-orange);
+    padding-left: 10px;
+}
+
+.synopsis-text {
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+/* === [SECTOR] MOVIE DETAIL CARD BUTTON === */
+
+/* 버튼이 우측 하단에 배치되도록 감싸는 영역 */
+.info-bottom.text-end {
+    margin-top: auto; /* 상단 텍스트 양에 상관없이 항상 아래로 밀어냄 */
+    padding-top: 20px;
+}
+
+/* 주황색 테마 버튼 본체 */
+.btn-card-reserve {
+    display: inline-block;
+    background-color: var(--jsl-orange); /* 루트에 정의한 주황색 사용 */
+    color: #ffffff !important;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--jsl-orange);
+    box-shadow: 0 4px 15px rgba(255, 132, 58, 0.3);
+}
+
+/* 마우스 호버 시 효과: 더 밝아지거나 그림자 강조 */
+.btn-card-reserve:hover {
+    background-color: #ff9d63; /* 조금 더 밝은 주황 */
+    border-color: #ff9d63;
+    transform: translateY(-3px); /* 위로 살짝 떠오름 */
+    box-shadow: 0 8px 25px rgba(255, 132, 58, 0.5);
+    color: #ffffff !important;
+}
+
+/* 클릭하는 순간의 효과 */
+.btn-card-reserve:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(255, 132, 58, 0.2);
+}
+
+/* 버튼 내부 아이콘 간격 */
+.btn-card-reserve i {
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+/* 좋아요 하트 버튼 */
+.btn-like-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex; /* 아이콘 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
+}
+.btn-like-circle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1); /* 마우스 올리면 커짐 */
+}
+
+/* 별점 UI */
+.star-rating {
+    cursor: pointer;
+    display: inline-block;
+}
+.star-rating i {
+    font-size: 1.5rem;
+    color: #444; /* 기본 회색 (꺼진 별) */
+    transition: color 0.2s, transform 0.2s;
+}
+.star-rating i.active {
+    color: #ffc107; /* 켜진 별 (황금색) */
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5); /* 빛나는 효과 */
+}
+.star-rating i:hover {
+    transform: scale(1.3); /* 마우스 올린 별은 툭 튀어나옴 */
+}
+
+/* === [SECTOR] RESERVATION PAGE === */
+
+.reserve-container-glass {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* 상단 미니 포스터 */
+.mini-poster {
+    width: 60px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #efefef;
+}
+
+/* 날짜 아이템 */
+.date-list { gap: 15px; overflow-x: auto; padding-bottom: 10px; }
+.date-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 80px;
+    border: 1px solid transparent;
+}
+.date-item:hover { background: rgba(255, 132, 58, 0.1); }
+.date-item.active {
+    background: var(--jsl-orange);
+    border-color: var(--jsl-orange);
+}
+.date-item .day { font-size: 1.4rem; font-weight: 800; }
+.date-item .dow { font-size: 0.8rem; opacity: 0.7; }
+
+/* 시간표 카드 */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+.schedule-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+.schedule-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--jsl-orange);
+    transform: translateY(-5px);
+    color: white;
+}
+.sch-time { font-size: 1.6rem; font-weight: 800; margin-bottom: 5px; }
+.sch-info { font-size: 0.9rem; display: flex; flex-direction: column; gap: 2px; }
+.text-orange { color: var(--jsl-orange); }
+
+/* 날짜 리스트를 감싸는 링크 스타일 초기화 */
+.date-list a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit;        /* 부모 색상 상속 (흰색 유지) */
+    display: block;        /* 클릭 영역 확보 */
+}
+
+/* .date-item의 기존 스타일과 잘 어우러지도록 보정 */
+.date-item {
+    /* 기존 스타일 유지 */
+    min-width: 85px;
+    text-align: center;
+    transition: all 0.2s ease;
+    
+    /* 클릭 시 테두리 깜빡임 방지 */
+    outline: none; 
+}
+
+/* 활성화된 날짜나 호버 상태 디자인 */
+.date-item.active, .date-list a:hover .date-item {
+    /* 기존 주황색 포인트 유지 */
+    /* background와 color는 JSP의 active 클래스나 date-item:hover에서 처리됨 */
+}
+
+/* 상영관 스크린 */
+.screen-container {
+    perspective: 500px;
+    text-align: center;
+}
+.screen {
+    background: #e0e0e0;
+    height: 22px;
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    transform: rotateX(-10deg);
+    color: #555;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* 좌석 공통 스타일 */
+.seat {
+    width: 32px;
+    height: 32px;
+    margin: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* 좌석 상태별 색상 */
+.seat:hover:not(.reserved) { background: rgba(255, 132, 58, 0.3); }
+.seat.selected { background: var(--jsl-orange); border-color: var(--jsl-orange); color: #fff; }
+.seat.reserved { background: #333; cursor: not-allowed; color: #555; border-color: transparent; }
+
+.row-label { color: rgba(255, 255, 255, 0.5); font-weight: bold; padding-right: 15px; }
+
+/* === [MY TICKET PAGE] === */
+
+/* 1. 티켓 카드용 글래스모피즘 보정 */
+/* 티켓 리스트에서는 padding을 0으로 줘서 이미지가 꽉 차게 해야 하므로,
+   기존 .reserve-container-glass의 padding을 덮어씌울 필요가 있을 때 사용 */
+.reserve-container-glass.p-0 {
+    padding: 0 !important;
+}
+
+/* 2. 포스터 이미지 비율 유지 (부트스트랩 구버전 대비용) */
+.object-fit-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. 텍스트 오렌지 (만약 없다면 추가) */
+.text-orange {
+    color: var(--jsl-orange); /* 또는 #ff843a */
+}
+
+/* 4. 제목 옆 노란 줄 (부트스트랩 border-warning 색상 커스텀 하고 싶다면) */
+.border-warning {
+    border-color: var(--jsl-orange) !important;
+}
+
+/* 5. 결제 완료 뱃지 색상 커스텀 */
+.bg-warning {
+    background-color: var(--jsl-orange) !important;
+    color: #fff !important; /* 글자색 흰색으로 변경 */
+}
