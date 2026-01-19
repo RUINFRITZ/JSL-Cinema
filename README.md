@@ -6,6 +6,7 @@ Project: JSL Cinema
 "ユーザーには最高の感動を、管理者には効率的な運営を。" MVCパターン基盤の映画予約およびメンバーシップ管理システム
 
 1. プロジェクト概要 (Overview)
+   
 プロジェクト名: JSL Cinema
 
 開発期間: 2026.01.12 ~ 2026.01.16 (5日間の午前集中開発 4時間/日、計20時間：企画含め1週間)
@@ -21,6 +22,7 @@ Model 2 MVCパターンを適用し、保守性に優れたWebアプリケーシ
 最新トレンドである Glassmorphism（すりガラス風）UI を適用し、差別化されたユーザー体験を提供。
 
 2. 技術スタック (Tech Stack)
+   
 🖥️ Backend
 Language: Java 17
 
@@ -45,6 +47,7 @@ VCS: Git & GitHub
 DB Tool: SQL Developer
 
 3. システムアーキテクチャ (System Architecture)
+   
 [MVC Design Pattern]
 
 Controller (*.do):
@@ -64,6 +67,7 @@ View (JSP):
 JSTL/ELを使用し、ViewからJavaコードを排除することで、デザインとロジックの分離を実現。
 
 4. 主な機能 (Key Features)
+   
 👤 ユーザー (User)
 映画予約システム (Reservation):
 
@@ -93,6 +97,7 @@ multipart/form-dataリクエスト処理およびサーバーパスへのファ�
 映画と上映館情報を照会し、日時別の上映スケジュール(datetime-local)を登録。
 
 5. トラブルシューティング (Troubleshooting & Challenges)
+   
 Issue 1: Eclipseデプロイパスとファイルアップロード消失
 問題: 管理者モードでポスター画像をアップロードしたが、サーバー再起動時に画像が消える現象が発生。
 
