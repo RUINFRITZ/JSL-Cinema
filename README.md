@@ -22,7 +22,7 @@ Model 2 MVCパターンを適用し、保守性に優れたWebアプリケーシ
 
 2. 技術スタック (Tech Stack)
 🖥️ Backend
-Language: Java 11
+Language: Java 17
 
 Web Server: Apache Tomcat 9.0
 
@@ -112,4 +112,5 @@ Issue 3: 外部ライブラリ(JBCrypt) ビルドパスの競合
 
 
 6. プロジェクト後記 (Conclusion)
+
 単純なCRUDを超え、実際の映画館で使用される予約ロジックを実装することで、DB設計の重要性を体感しました。特にユーザー体験(UX)を考慮したUI改善と、管理者機能を通じたデータ制御まで、WebサービスのA to Zを経験した意義深いプロジェクトでした。
