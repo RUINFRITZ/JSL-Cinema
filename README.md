@@ -1,5 +1,6 @@
 JSL-Cinema
 JSL人材開発院 Cloud連携Web開発者課程26期 個人プロジェクト
+PPT : https://1drv.ms/p/c/563a77a803c69188/IQDQsq1F5ojjT6pv5JmGNXiXAb2cCep_PlfO-0SeCHgZ0-o?e=yaERv9
 
 Project: JSL Cinema
 "ユーザーには最高の感動を、管理者には効率的な運営を。" MVCパターン基盤の映画予約およびメンバーシップ管理システム
