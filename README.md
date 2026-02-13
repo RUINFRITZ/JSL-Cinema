@@ -1,5 +1,6 @@
 JSL-Cinema
 JSL人材開発院 Cloud連携Web開発者課程26期 個人プロジェクト
+
 PPT : https://1drv.ms/p/c/563a77a803c69188/IQDQsq1F5ojjT6pv5JmGNXiXAb2cCep_PlfO-0SeCHgZ0-o?e=yaERv9
 
 Project: JSL Cinema
@@ -32,14 +33,14 @@ Database: Oracle DB 11g/18c (OJDBC8)
 
 Framework/Lib: JSP & Servlet, JSTL, COS (File Upload), BCrypt (Security)
 
-🎨 Frontend
+- Frontend
 Language: HTML5, CSS3, JavaScript (ES6)
 
 Library: Bootstrap 5.3 (Grid System), jQuery (AJAX), Bootstrap Icons
 
 Design Pattern: Glassmorphism UI (Custom CSS)
 
-🛠️ Tools & Environment
+- Tools & Environment
 IDE: Eclipse IDE 2023-09
 
 VCS: Git & GitHub
