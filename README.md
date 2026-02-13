@@ -24,7 +24,7 @@ Model 2 MVCパターンを適用し、保守性に優れたWebアプリケーシ
 
 2. 技術スタック (Tech Stack)
    
-🖥️ Backend
+- Backend
 Language: Java 17
 
 Web Server: Apache Tomcat 9.0
@@ -69,7 +69,7 @@ JSTL/ELを使用し、ViewからJavaコードを排除することで、デザ�
 
 4. 主な機能 (Key Features)
    
-👤 ユーザー (User)
+- ユーザー (User)
 映画予約システム (Reservation):
 
 映画選択 → 日時選択 → 座席選択 → 決済(ポイント)へと続くワンストッププロセス。
@@ -86,7 +86,7 @@ DBトランザクション: 座席予約とポイント消費が同時に行わ�
 
 会員ランク(Member~MVP)に応じたポイント付与率および割引特典の適用。
 
-⚙️ 管理者 (Admin)
+- 管理者 (Admin)
 映画登録 (File Upload):
 
 multipart/form-dataリクエスト処理およびサーバーパスへのファイルアップロード実装。
